@@ -1,11 +1,11 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, 1280)
 cap.set(4, 720)
 
-detector = HandDetector(detectionCon=0.8)
+detector = HandDetector(detectionCon=0.7)
 startDist = None
 scale = 0
 cx, cy = 500, 500
@@ -13,7 +13,7 @@ cx, cy = 500, 500
 while True:
     succes, img = cap.read()
     hands, img = detector.findHands(img)
-    img1 = cv2.imread("Python.jpg")
+    img1 = cv2.imread("cvarduino.jpg")
 
     if len(hands)==2:
         # print("Zoom")
