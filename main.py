@@ -1,5 +1,5 @@
 import cv2
-from cvzone.HandTrackingModule import HandDetector
+from lib import HandDetector
 
 cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
@@ -12,7 +12,7 @@ cx, cy = 500,500
 while True:
     success, img = cap.read()
     hands, img = detector.findHands(img)
-    img1 = cv2.imread("cvarduino.jpg")
+    img1 = cv2.imread("ehb2.jpg")
 
     if len(hands) == 2:
         # print(detector.fingersUp(hands&amp;#91;0]), detector.fingersUp(hands&amp;#91;1]))
@@ -23,13 +23,13 @@ while True:
             lmList2 = hands[1]["lmList"]
             # point 8 is the tip of the index finger
             if startDist is None:
-                #length, info, img = detector.findDistance(lmList1&amp;#91;8], lmList2&amp;#91;8], img)
-                length, info, img = detector.findDistance(hands[0]["center"], hands[1]["center"], img)
+                length, info, img = detector.findDistance(lmList1[8], lmList2[8], img)
+                # length, info, img = detector.findDistance(hands[0]["center"], hands[1]["center"], img)
 
                 startDist = length
 
-            #length, info, img = detector.findDistance(lmList1&amp;#91;8], lmList2&amp;#91;8], img)
-            length, info, img = detector.findDistance(hands[0]["center"], hands[1]["center"], img)
+            length, info, img = detector.findDistance(lmList1[8], lmList2[8], img)
+            # length, info, img = detector.findDistance(hands[0]["center"], hands[1]["center"], img)
 
             scale = int((length - startDist) // 2)
             cx, cy = info[4:]
