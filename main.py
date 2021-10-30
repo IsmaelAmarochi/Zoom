@@ -15,7 +15,8 @@ while True:
     img1 = cv2.imread("ehb2.jpg")
 
     if len(hands) == 2:
-        # print(detector.fingersUp(hands&amp;#91;0]), detector.fingersUp(hands&amp;#91;1]))
+        # print("Zoom")
+        # print(detector.fingersUp(hands[0]), detector.fingersUp(hands[1]))
         if detector.fingersUp(hands[0]) == [1, 1, 0, 0, 0] and \
                 detector.fingersUp(hands[1]) == [1, 1, 0, 0, 0]:
             # print("Zoom Gesture")
